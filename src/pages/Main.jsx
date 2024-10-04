@@ -8,13 +8,6 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import { SimpleTreeView } from "@mui/x-tree-view/SimpleTreeView";
 import { TreeItem } from "@mui/x-tree-view/TreeItem";
-const style2 = {
-  borderColor: "yellow",
-  color: "yellow",
-  marginTop: 5,
-  marginLeft: 120,
-  fontFamily: "'CustomFont', sans-serif",
-};
 
 export default function Main({ planets, setPlanet }) {
   return (

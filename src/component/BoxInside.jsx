@@ -12,12 +12,13 @@ import { SimpleTreeView } from "@mui/x-tree-view/SimpleTreeView";
 import { TreeItem } from "@mui/x-tree-view/TreeItem";
 
 const style2 = {
-  borderColor: "yellow",
-  color: "yellow",
+  borderColor: "rgb(191, 103, 211)",
+  color: "rgb(191, 103, 211)",
   margin: "60px auto",
   display: "flex",
   fontFamily: "'CustomFont', sans-serif",
 };
+
 
 export default function BoxInside({ planets, setPlanet }) {
   function handleClick(planets) {
@@ -54,7 +55,7 @@ export default function BoxInside({ planets, setPlanet }) {
                 right: "-205px",
                 textAlign: "center",
                 width: "1510px", // Set width to full viewport width
-                border: "2px solid yellow",
+                border: "2px solid rgb(191, 103, 211)",
                 borderRadius: "5px",
                 fontFamily: "'CustomFont', sans-serif", // Corrected to fontFamily
               }}

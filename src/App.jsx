@@ -7,12 +7,13 @@ import Navbar from "./component/Navbar";
 import Background from "./component/Background";
 import Page1_info from "./pages/Page1_info";
 import Story from "./pages/Story";
-import Challenges from "./pages/Challenges";
+import ChallengesPage from './pages/ChallengesPage.jsx'
 
 function App() {
   const [planets, setPlanet] = useState("first");
 
   return (
+
     <BrowserRouter>
       <Background planets={planets} setPlanet={setPlanet} />
       {/* <Navbar /> */}
@@ -21,10 +22,8 @@ function App() {
           path="/"
           element={<Main planets={planets} setPlanet={setPlanet} />}
         />
-        <Route path="/story" element={<Story />}>
-          {" "}
-          <Route path="/story/info" element={<Page1_info />} />
-        </Route>
+        <Route path="/story" element={<Story />} />
+        <Route path="/challenges" element={<ChallengesPage />} />
       </Routes>
     </BrowserRouter>
 

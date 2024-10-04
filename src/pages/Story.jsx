@@ -3,7 +3,7 @@ import styles from './story.module.css'
 import { useEffect, useState } from 'react'
 import Button from '@mui/material/Button';
 import {paragraph} from '../data/data.js';
-import Chatbot from './chatbot.jsx';
+import Chatbot from './Chatbot.jsx';
 
 const style = {
   position: "absolute", 

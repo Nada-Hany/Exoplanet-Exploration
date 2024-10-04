@@ -3,25 +3,49 @@ import styles from './story.module.css'
 import { useEffect, useState } from 'react'
 import Button from '@mui/material/Button';
 import {paragraph} from '../data/data.js'
+import { height } from '@fortawesome/free-solid-svg-icons/fa0';
+import { useNavigate } from "react-router-dom";
 
-const style = {
+
+
+const nextBtnStyle = {
   position: "absolute", 
   width: 150,
   top: 650,
   left: 1300,
   backgroundColor: "#4e1363"
 }
-import Page1_info from "./Page1_info";
 
+const challengesBtnStyle = {
+  position: "absolute", 
+  width: 300,
+  height:60,
+  // top: 400,
+  // left: 650,
+  alignText: "center",
+  fontSize:20,
+  color:"white",
+  backgroundColor: "#4e1363"
+}
 
 export default function Story() {
   const [isShow, setShow] = useState(false)
   const [zoomIn, setZoomIn] = useState(true)
   const [index, setIndex] = useState(0)
+  const [isShowBtn, setShowBtn] = useState(false)
+  const navigate = useNavigate();
   
+  
+
+  function goToChallenge() {
+    console.log("in go to challenge");
+    navigate("/challenges");
+  }
   const handleZoomIn = ()=>{
     if(index == paragraph.length-1)
+    {setShowBtn(true)
       return
+    }
     setShow(false)
     setZoomIn(true)
     setIndex((old) => old+1)
@@ -33,9 +57,8 @@ export default function Story() {
     setTimeout(() => {
       handleZoomIn();
     }, 2000);
-
   }
-  function handleTime(millsec = 3500) {
+  function handleTime(millsec = 3000) {
     setTimeout(() => {
       setShow((old) => !old)
     }, millsec);
@@ -54,7 +77,7 @@ export default function Story() {
   useEffect(() =>{
     setTimeout(() => {
       setShow(true)
-    }, 3500);
+    }, 2000);
   }, [])
 
   function getIamageClass (){
@@ -72,7 +95,8 @@ export default function Story() {
         }else{
           handleZoomIn()
         }
-      }} sx={style} variant='contained'> Next</Button> }
+      }} sx={nextBtnStyle} variant='contained'> Next</Button> }
+      {isShowBtn && <Button onClick={goToChallenge} sx={challengesBtnStyle} variant='conntained'>go to challenges</Button>}
     </div>
     </>
   )

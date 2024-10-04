@@ -15,7 +15,7 @@
     width: 100%;
     height: 100%;
     transition: transform 3s ease; /*    Smooth transition */
-    animation: zoom-in 2s ease 2s forwards; 
+    animation: zoom-in 2s ease 1s forwards; 
 }
 .zoomImage {
     transform-origin: 20% 50%; /* Default zoom from center */
@@ -63,7 +63,7 @@
 }
 .story{
     position: absolute; 
-    width: 300px;
+    width: 350px;
     top: 50%;          
     left: 20%; 
     color: rgb(236, 236, 236);   

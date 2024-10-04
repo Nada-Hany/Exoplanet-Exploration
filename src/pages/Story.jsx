@@ -2,32 +2,14 @@ import BG from '../assets/2.jpg'
 import styles from './story.module.css'
 import { useEffect, useState } from 'react'
 import Button from '@mui/material/Button';
-import {paragraph} from '../data/data.js';
+import {paragraph, nextBtnStyle, challengesBtnStyle, skipBtnStyle} from '../data/data.js';
 import Chatbot from './Chatbot.jsx';
 import { height } from '@fortawesome/free-solid-svg-icons/fa0';
 import { useNavigate } from "react-router-dom";
 
 
 
-const nextBtnStyle = {
-  position: "absolute", 
-  width: 150,
-  top: 50,
-  left: 1300,
-  backgroundColor: "#4e1363"
-}
 
-const challengesBtnStyle = {
-  position: "absolute", 
-  width: 300,
-  height:60,
-  // top: 400,
-  // left: 650,
-  alignText: "center",
-  fontSize:20,
-  color:"white",
-  backgroundColor: "#4e1363"
-}
 
 export default function Story() {
   const [isShow, setShow] = useState(false)
@@ -42,9 +24,13 @@ export default function Story() {
     console.log("in go to challenge");
     navigate("/challenges");
   }
+
   const handleZoomIn = ()=>{
     if(index == paragraph.length-1)
-    {setShowBtn(true)
+    {
+      console.log("button shown");
+      setShowBtn(() => true)
+      console.log(isShowBtn);
       return
     }
     setShow(false)
@@ -86,10 +72,10 @@ export default function Story() {
   }
 
   return (
-    <div>
      <div className={styles.imageContainer}>
         <img src={BG} alt="Sample Image"  className={`${getIamageClass()} ${styles.image } ${getID()}`}/>
       {index!=paragraph.length &&< p hidden={(!isShow)} className={styles.story}>{paragraph[index]}</p>}
+      <Button onClick={goToChallenge} sx={skipBtnStyle} variant='conntained'>skip stroy</Button>
       {(isShow &&index!=paragraph.length) && <Button onClick={() => {
         if(zoomIn){
           handlZoomout()
@@ -98,8 +84,7 @@ export default function Story() {
         }
       }} sx={nextBtnStyle} variant='contained'> Next</Button> }
     <Chatbot />
-    </div>
-      {isShowBtn && <Button onClick={goToChallenge} sx={challengesBtnStyle} variant='conntained'>go to challenges</Button>}
+    {isShowBtn && <Button onClick={goToChallenge} sx={challengesBtnStyle} variant='conntained'>go to challenges</Button>}
     </div>
   )
 }
